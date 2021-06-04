@@ -339,7 +339,8 @@ function plotLineChart() {
                 date: d3.timeParse("%Y-%m-%d")(d.release),
                 title: d.title,
                 company: d.company,
-                type: d.type
+                type: d.type,
+                trailer: d.trailer
             }
         },
         // second function applied on result of first function: plot the release data as vertical lines
@@ -414,6 +415,11 @@ function plotLineChart() {
                 .attr("y2", height)
                 .style("opacity", opacityVertLine) //opacityVertLine is a global variable to set the visibility of the verical lines and the legend
                 .attr("stroke", d => color(d.type))
+                .on("click", (d, i) => {
+                    document.querySelector("#four").click()
+                    document.querySelector("#trailer-name").textContent = d.title
+                    document.querySelector("#embed-me").innerHTML = '<iframe width="1200" height="600" src="' + d.trailer + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                })
                 .on("mouseover", function (d, i) {
                     //plot tooltip with selected release
                     ttFeature.transition()

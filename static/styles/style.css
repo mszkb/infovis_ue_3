@@ -1,10 +1,20 @@
 body {
-    padding-left: 5em;
     font-family: Calibri, Arial, Helvetica, sans-serif;
     color: #222222;
     background-color: #fff;
+    padding: 0;
+    margin: 0;
 }
-
+h1 {
+    margin-top: 0
+}
+.content {
+    padding: 30px;
+}
+#four {
+    opacity: 0;
+    visibility: hidden;
+}
 .container {
     display: table-cell;
     vertical-align:top;

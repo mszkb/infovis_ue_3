@@ -4,30 +4,61 @@
     <meta charset="UTF-8">
     <title>InfoVis UE 2021</title>
 
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/animations.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/style.css') }}">
 
     <script src="https://d3js.org/d3.v4.js"></script>
     <!--<script src="https://d3js.org/d3.v5.min.js"></script> -->
-    <script src="{{url_for('static',filename='js/lineChart.js')}}"></script>
+    <script src="{{ url_for('static',filename='js/lineChart.js') }}"></script>
 
 </head>
 <body>
 
-<h1>InfoVis UE 2021 - Exercise 3</h1>
-<h2>Visualising World of Warcraft Token Prices (in Gold)</h2>
-<p>double clik on the chart to re-initialise.</p>
-<!-- Initialize a select button -->
-<div>Select a region: <select id="selectButton"></select>
-<button id="button">toggle game/patch releases on/off</button>
-</div>
-<!-- Container for the line chart -->
-<div id="line_chart"></div>
+<div id="modal-container" onclick="closeModal()">
+    <div class="modal-background">
+        <div class="modal">
+            <h2 id="trailer-name"></h2>
+            <div id="embed-me">
 
-<!-- Container for the color legend -->
-<div id="legend"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+
+    <h1>InfoVis UE 2021 - Exercise 3</h1>
+    <h2>Visualising World of Warcraft Token Prices (in Gold)</h2>
+    <p>double clik on the chart to re-initialise.</p>
+    <!-- Initialize a select button -->
+    <div>Select a region: <select id="selectButton"></select>
+        <button id="button">toggle game/patch releases on/off</button>
+    </div>
+    <!-- Container for the line chart -->
+    <div id="line_chart"></div>
+
+    <!-- Container for the color legend -->
+    <div id="legend"></div>
+
+    <div id="four" class="button" onclick="blowUp()">Blow Up</div>
+
+</div>
 <script>
-//plot the line chart
-plotLineChart()
+    //plot the line chart
+    plotLineChart()
+
+    const $modal = document.querySelector("#modal-container")
+    const $body = document.querySelector("body")
+
+    function blowUp() {
+        $modal.className = "";
+        $modal.classList.add("four");
+        $body.classList.add("modal-active")
+    }
+
+    function closeModal() {
+        $modal.classList.add("out");
+        $body.classList.remove("modal-active")
+    }
 </script>
 
 </body>
