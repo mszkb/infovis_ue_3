@@ -26,8 +26,12 @@ body {
 }
 
 .vertLine{
-    stroke-width: 4;
-    stroke-dasharray: 4;
+    stroke-width: 2;
+    cursor: pointer;
+    opacity: 0.4;
+}
+.vertLine:hover {
+    stroke-width: 8;
 }
 
 div.tooltipFeature {
