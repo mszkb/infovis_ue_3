@@ -358,14 +358,14 @@ function plotLineChart() {
 
             // define different colours for the release-types "game" and "patch"
             var color = d3.scaleOrdinal()
-                .domain(["patch", "game"]) //use ordinal scaling
-                .range(["#000000", //color of patch
+                .domain(["content-patch", "minor-patch", "raid-patch", "game"]) //use ordinal scaling
+                .range(["#00ab00", "#000000", "#0000ab", //color of patch
                     "#d94701"]) //color of game
 
             //draw a legend at the bottom of the chart
             var legend = d3.select("#legend")
                 .append("svg") //refers to the whole svg
-                .attr("width", 100)
+                .attr("width", 500)
                 .attr("height", 100)
                 .attr("id", "mylegend")
                 .append("g")
@@ -376,9 +376,9 @@ function plotLineChart() {
                 .append('rect')
                 .attr("class", "legendRect")
                 .attr("fill-opacity", opacityVertLine) //opacityVertLine is a global variable to set the visibility of the verical lines and the legend
-                .attr('width', 50)
+                .attr('width', 120)
                 .attr('x', function (d, i) {
-                    return i * 50;
+                    return i * 120;
                 })
                 .attr('y', 40)
                 .attr('height', 20)
@@ -393,7 +393,7 @@ function plotLineChart() {
                 .attr("class", "legendText")
                 .style("opacity", opacityVertLine) //opacityVertLine is a global variable to set the visibility of the verical lines and the legend
                 .attr('x', function (d, i) {
-                    return (i) * 50 + 1;
+                    return (i) * 120 + 1;
                 })
                 .attr('y', 70)
                 .text(function (d, i) {
