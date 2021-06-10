@@ -329,7 +329,7 @@ function plotLineChart() {
                     )
                     .attr("stroke", color(selectedRegion))
             }
-        });
+
 
     //read the blizzard release data to draw the vertical lines that correspond to the release dates (games & patches)
     d3.csv("/static/data/blizzard.csv",
@@ -340,7 +340,8 @@ function plotLineChart() {
                 title: d.title,
                 company: d.company,
                 type: d.type,
-                trailer: d.trailer
+                trailer: d.trailer,
+                details: d.details
             }
         },
         // second function applied on result of first function: plot the release data as vertical lines
@@ -417,8 +418,13 @@ function plotLineChart() {
                 .attr("stroke", d => color(d.type))
                 .on("click", (d, i) => {
                     document.querySelector("#four").click()
-                    document.querySelector("#trailer-name").textContent = d.title
-                    document.querySelector("#embed-me").innerHTML = '<iframe width="1200" height="600" src="' + d.trailer + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    document.querySelector("#trailer-name").innerHTML = '<a href="'+ d.details +'" target="_blank">' + d.title + '</a>'
+                    console.log(d)
+                    if (["raid-patch", "minor-patch"].indexOf(d.type) !== -1) {
+                        document.querySelector("#embed-me").innerHTML = '<iframe width="1200" height="600" src="' + d.details + '" title="Patchnotes" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    } else if (["game", "content-patch"].indexOf(d.type) !== -1) {
+                        document.querySelector("#embed-me").innerHTML = '<iframe width="1200" height="600" src="' + d.trailer + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+                    }
                 })
                 .on("mouseover", function (d, i) {
                     //plot tooltip with selected release
@@ -456,6 +462,6 @@ function plotLineChart() {
             .transition()
             .attr("fill-opacity", opacityVertLine);
     })
-
+});
 }
 

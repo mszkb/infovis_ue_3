@@ -197,7 +197,7 @@ html.modal-active, body.modal-active {
   animation: modalContentFadeOut 0.5s 0.5 cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 #modal-container .modal-background {
-  display: table-cell;
+  /*display: table-cell;*/
   background: rgba(0, 0, 0, 0.8);
   text-align: center;
   vertical-align: middle;

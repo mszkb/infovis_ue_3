@@ -57,3 +57,7 @@ div.tooltipFeature {
     pointer-events: none;
     z-index: 999;
 }
+
+.modal, #embed-me, iframe {
+    width: 100%;
+}
