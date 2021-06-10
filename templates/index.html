@@ -50,6 +50,7 @@
     const $body = document.querySelector("body")
 
     function blowUp() {
+        $modal.style.display = "block";
         $modal.className = "";
         $modal.classList.add("four");
         $body.classList.add("modal-active")
@@ -57,7 +58,12 @@
 
     function closeModal() {
         $modal.classList.add("out");
-        $body.classList.remove("modal-active")
+        $body.classList.remove("modal-active");
+        setTimeout(() => {
+            $modal.classList.remove("four");
+            $modal.classList.remove("out");
+            $modal.style.display = "none";
+        }, 1000)
     }
 </script>
 
