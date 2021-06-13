@@ -4,6 +4,7 @@ body {
     background-color: #fff;
     padding: 0;
     margin: 0;
+    text-align: center;
 }
 h1 {
     margin-top: 0
@@ -60,4 +61,8 @@ div.tooltipFeature {
 
 .modal, #embed-me, iframe {
     width: 100%;
+}
+
+#line_chart {
+    overflow: auto;
 }
